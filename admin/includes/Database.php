@@ -15,7 +15,7 @@ class Database
     {
         $this->connection = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if ($this->connection->connect_errno) {
-            die("Database connection has failed terribly " . $this->connection->connect_error);
+            die("Database connection has failed terribly: " . $this->connection->connect_error);
         }
     }
 
@@ -29,7 +29,7 @@ class Database
     private function confirm_query($result)
     {
         if (!$result) {
-            die("Query failed " . $this->connection->error);
+            die("Query failed: " . $this->connection->error);
         } else {
             return $result;
         }
@@ -43,6 +43,10 @@ class Database
     public function the_insert_id()
     {
         return $this->connection->insert_id;
+    }
+
+    public function insert_id(){
+        return mysqli_insert_id($this->connection);
     }
 }
 

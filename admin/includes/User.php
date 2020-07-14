@@ -63,4 +63,40 @@ class User
         return !empty($result) ? array_shift($result) : false;
 
     }
+
+    public function create()
+    {
+        global $database;
+        $firstName = $database->escape_string($this->first_name);
+        $lastName = $database->escape_string($this->last_name);
+        $userName = $database->escape_string($this->username);
+        $password = $database->escape_string($this->password);
+        $sql = "INSERT INTO users (`username`, `password`, `first_name`, `last_name`) VALUES ('$userName', '$password', '$firstName', '$lastName')";
+
+        if ($database->query($sql)) {
+            $this->id = $database->insert_id();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function update() {
+        global $database;
+        $id = $database->escape_string($this->id);
+        $firstName = $database->escape_string($this->first_name);
+        $lastName = $database->escape_string($this->last_name);
+        $userName = $database->escape_string($this->username);
+        $password = $database->escape_string($this->password);
+        $sql = "UPDATE users SET username='$userName', password='$password', first_name='$firstName', last_name='$lastName' WHERE id='$id'";
+        $database->query($sql);
+        return (mysqli_affected_rows($database->connection)) == 1;
+    }
+
+    public function delete() {
+        global $database;
+        $id = $database->escape_string($this->id);
+        $sql = "DELETE FROM users WHERE id='$id' LIMIT 1";
+        $database->query($sql);
+    }
 }
