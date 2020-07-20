@@ -4,7 +4,7 @@ function myAutoloader($class)
 {
     $class = ucfirst(strtolower($class));
 
-    $path = 'includes/{$class}.php';
+    $path = 'includes/'.$class.'.php';
 
     if (is_file($path) && !class_exists($class)) {
         include $path;

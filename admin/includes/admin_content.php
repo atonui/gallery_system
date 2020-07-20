@@ -9,15 +9,32 @@
             </h1>
             <?php
 //            $user = new User();
-//            $user->last_name = "mimi";
+//            $user->username = "mimi";
 //            $user->first_name = "siimi";
 //            $user->password = "124552653";
 //
 //            $user->save()
+//
+//            $user = User::find_user_by_id(11);
+//            $user->password = "1234756347563";
+//            $user->save();
 
-            $user = User::find_user_by_id(11);
-            $user->password = "1234756347563";
-            $user->save();
+//            $users = User::find_all();
+//            foreach ($users as $user) {
+//                echo $user->username;
+//            }
+
+//            $picha = new Photo();
+//            $picha->title = "picha tena";
+//            $picha->size = 2;
+//            $picha->save();
+
+//            $photos = Photo::find_all();
+//            foreach ($photos as $photo) {
+//                echo $photo->title;
+//            }
+
+            echo INCLUDES_PATH;
 
             ?>
             <ol class="breadcrumb">
