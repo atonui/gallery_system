@@ -34,8 +34,6 @@
 //                echo $photo->title;
 //            }
 
-            echo INCLUDES_PATH;
-
             ?>
             <ol class="breadcrumb">
                 <li>

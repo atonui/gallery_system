@@ -41,9 +41,9 @@ class Db_object
     }
 
 //function to find users by their id. Returns an associative array rather than a sql result table
-    public static function find_by_id($user_id)
+    public static function find_by_id($id)
     {
-        $result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id=$user_id LIMIT 1");
+        $result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id=$id LIMIT 1");
         return !empty($result_array) ? array_shift($result_array) : false;
     }
 
