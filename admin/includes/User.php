@@ -7,8 +7,11 @@ class User extends Db_object
     public $first_name;
     public $last_name;
     public $password;
+    public $image_name;
     protected static $db_table = "users";
-    protected static $db_fields = array('username', 'password', 'first_name', 'last_name');
+    protected static $db_fields = array('username', 'password', 'first_name', 'last_name', 'image_name');
+    public $upload_directory = "images";
+    public $image_placeholder = "http://placehold.it/100x100&text=image";
 
     public static function verify_user($username, $password)
     {
@@ -21,6 +24,19 @@ class User extends Db_object
 
         return !empty($result) ? array_shift($result) : false;
 
+    }
+
+    public function image_path_placeholder() {
+        return empty($this->image_name) ? $this->image_placeholder : $this->upload_directory.DS.$this->image_name;
+    }
+
+    public function delete_user() {
+        if ($this->delete()) {
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->image_name;
+            return unlink($target_path);
+        } else {
+            return false;
+        }
     }
 
 }

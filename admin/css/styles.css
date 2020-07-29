@@ -1,7 +1,8 @@
 
 .admin-photo-thumbnail {
-    width: 200px;
+    width: 150px;
     border-radius: 5px;
+    height: auto;
 }
 
 /**********Edit photo page sidebar styles**********/

@@ -45,7 +45,7 @@
                                         <a href="">View</a>
                                     </div>
                                 </td>
-                                <td><?php echo $photo->filename ?></td>
+                                <td><?php echo $photo->image_name ?></td>
                                 <td><?php echo $photo->title ?></td>
                                 <td><?php echo $photo->size ?></td>
                             </tr>
