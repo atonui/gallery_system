@@ -1,10 +1,15 @@
-<?php include("includes/header.php"); ?>
+<?php include("includes/header.php");
+if (!$session->is_signed_in()) {
+    redirect('login.php');
+};
 
-    <!-- Top Menu Items -->
-    <?php include 'includes/top_nav.php'?>
-    <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-    <?php include 'includes/side_nav.php'?>
-    <!-- /.navbar-collapse -->
+$comments = Comment::find_all();
+?>
+<!-- Top Menu Items -->
+<?php include 'includes/top_nav.php' ?>
+<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+<?php include 'includes/side_nav.php' ?>
+<!-- /.navbar-collapse -->
 </nav>
 
 <div id="page-wrapper">
@@ -15,16 +20,36 @@
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Comments
-                    <small>Subheading</small>
                 </h1>
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-file"></i> Blank Page
-                    </li>
-                </ol>
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Author</th>
+                            <th>Body</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach ($comments as $comment) {
+                            ?>
+                            <tr>
+                                <td> <img src="<?php echo Photo::find_by_id($comment->photo_id)->image_path() ?>" class="admin-photo-thumbnail">
+                                    <div class="action_link">
+                                        <a href="delete_comment.php?comment_id=<?php echo $comment->id; ?>" class="btn btn-danger btn-sm" role="button">Delete</a>
+                                    </div>
+                                </td>
+                                <td><?php echo $comment->author ?></td>
+                                <td><?php echo $comment->body ?></td>
+                            </tr>
+                            <?php
+                        }
+                        ?>
+                        </tbody>
+                        <!--                            End of table-->
+                    </table>
+                </div>
             </div>
         </div>
         <!-- /.row -->
@@ -37,4 +62,4 @@
 </div>
 <!-- /#page-wrapper -->
 
-<?php include("includes/footer.php"); ?>udes/footer.php"); ?>
+<?php include("includes/footer.php"); ?>

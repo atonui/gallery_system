@@ -11,7 +11,7 @@ class Comment extends Db_object
     protected static $db_fields = array('photo_id', 'author', 'body');
 
     public static function create_comment($photo_id, $author, $body) {
-        if (!empty($photo_id) && !empty($author) && !empty($boby)) {
+        if (!empty($photo_id) && !empty($author) && !empty($body)) {
             $comment = new Comment();
             $comment->photo_id = $photo_id;
             $comment->author = $author;
