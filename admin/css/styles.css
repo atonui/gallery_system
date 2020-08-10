@@ -40,3 +40,20 @@
     background-color: #ddd;
     padding: 10px;
 }
+
+.home_page_photo {
+    width: 200px;
+    height: 110px !important;
+}
+
+/*Pagination*/
+
+.pager .active a {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.pager .active a:hover {
+    background-color: #000000;
+    color: #ffffff;
+}

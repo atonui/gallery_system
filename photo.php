@@ -37,12 +37,12 @@ $comments = Comment::find_comment($_GET['photo_id']);
     <div class="row">
 
         <!-- Blog Post Content Column -->
-        <div class="col-lg-8">
+        <div class="col-lg-12">
 
             <!-- Blog Post -->
 
             <!-- Title -->
-            <h1>Blog Post Title</h1>
+            <h1><?php echo $photo->title;?></h1>
 
             <!-- Author -->
             <p class="lead">
@@ -63,9 +63,7 @@ $comments = Comment::find_comment($_GET['photo_id']);
             <hr>
 
             <!-- Post Content -->
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut,
-                error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae
-                laborum minus inventore?</p>
+            <p class="lead"><?php echo $photo->description; ?></p>
 
             <hr>
 
@@ -108,13 +106,13 @@ $comments = Comment::find_comment($_GET['photo_id']);
                 </div>
             <?php endforeach; ?>
 
-        </div>
+
 
         <!-- Blog Sidebar Widgets Column -->
-        <?php include("includes/sidebar.php"); ?>
+<!--        --><?php //include("includes/sidebar.php"); ?>
     <!-- /.row -->
 
-    <hr>
 
     <!-- Footer -->
     <?php include("includes/footer.php"); ?>
+        </div>
